@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Header />
-    <Main />
+    <Main :film='element'/>
+    
   </div>
 </template>
 
@@ -17,12 +18,9 @@ export default {
   components: {
     Header,
     Main,
+    
   },
-  data: function(){
-        return {
-            filmList : null,
-        }
-    },
+  
     created: function(){
     this.getFilmApi();
     },

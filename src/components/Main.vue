@@ -1,18 +1,24 @@
 <template>
-    <div >
-        <FilmContainer v-for='(element, index) in filmList' :key="index" :film='element'/>
+    <div>
+        <ul v-for='(element, index) in filmList' :key="index">
+            <li>{{film.adult}}</li>
+            <li>{{film.original_title}}</li>
+            <li>{{film.original_language}}</li>
+            <li>{{film.vote_average}}</li>
+        </ul>
     </div>
 </template>
 
 <script>
-import FilmContainer from './FilmContainer.vue'
 
 
 export default {
     name : 'MainIndex',
     props: ['film'],
-    components : {
-        FilmContainer
+    data: function(){
+        return {
+            filmList : null,
+        }
     },
 }
 </script>
