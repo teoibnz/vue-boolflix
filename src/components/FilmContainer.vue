@@ -1,11 +1,10 @@
 <template>
     <div> 
         <ul>
-            <li>{{film.original_title}}</li>
+            <li>{{film.adult}}</li>
             <li>{{film.original_title}}</li>
             <li>{{film.original_language}}</li>
             <li>{{film.vote_average}}</li>
-
         </ul>
     </div>
 </template>
