@@ -1,7 +1,7 @@
 <template>
     <div>
-        <ul v-for='(element, index) in filmList' :key="index">
-            <li>{{film.adult}}</li>
+        <ul v-for='(film, index) in filmList' :key="index" >
+            <li>{{film.title}}</li>
             <li>{{film.original_title}}</li>
             <li>{{film.original_language}}</li>
             <li>{{film.vote_average}}</li>
@@ -14,12 +14,8 @@
 
 export default {
     name : 'MainIndex',
-    props: ['film'],
-    data: function(){
-        return {
-            filmList : null,
-        }
-    },
+    props: ['filmList'],
+    
 }
 </script>
 
