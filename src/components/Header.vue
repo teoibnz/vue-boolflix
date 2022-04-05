@@ -1,7 +1,7 @@
 <template>
     <header>
         <input  v-model.trim="userInput" @keyup.enter="$emit('selectedFilms', userInput)" type="text">
-        <button href="" class="btn btn-secondary mx-2">Search Movies</button>
+        <button @click="$emit('selectedFilms', userInput)" class="btn btn-secondary mx-2">Search Movies</button>
         <select name="" id="">
             <option value="film">Films</option>
             <option value="serieTv">Tv Series</option>
@@ -15,7 +15,6 @@ export default {
     data: function(){
         return {
             userInput : '',
-            searchedFilms: '',
         }
     },
     methods : {
