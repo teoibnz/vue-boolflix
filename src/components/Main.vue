@@ -9,7 +9,9 @@
             <li>
                 <country-flag :country='flags(film.original_language)' size='big'/>
             </li>
-            <li>{{film.vote_average}}</li>
+            <li v-for="star in 5 - getStars(film.vote_average)" :key='star'>
+                <font-awesome-icon class="mb-3" icon="fa-solid fa-star" />
+            </li>
         </ul>
     </div>
 </template>
@@ -39,6 +41,10 @@ export default {
 
         filmPoster(poster){
             return this.posterFirstUrl + this.posterSize + `${poster}`
+        },
+
+        getStars(rating){
+            return Math.ceil(rating / 2)
         }
     }
 }
