@@ -1,10 +1,13 @@
 <template>
     <div>
         <ul v-for='(film, index) in filmList' :key="index" >
-            <li>{{film.title}}</li>
-            <li>{{film.original_title}}</li>
             <li>
-                <country-flag :country='flags(film.original_language)' size='big'/>{{film.original_language}}
+                <img :src="filmPoster(film.poster_path)" alt="film poster">
+            </li>
+            <li>{{film.title || film.name}}</li>
+            <li>{{film.original_title || film.original_name}}</li>
+            <li>
+                <country-flag :country='flags(film.original_language)' size='big'/>
             </li>
             <li>{{film.vote_average}}</li>
         </ul>
@@ -17,6 +20,12 @@
 export default {
     name : 'MainIndex',
     props: ['filmList'],
+    data : function(){
+        return {
+            posterFirstUrl : 'https://image.tmdb.org/t/p/',
+            posterSize : "w342",
+        }
+    },
     methods : {
         flags(name){
             let flag ='';
@@ -26,7 +35,11 @@ export default {
             else if (name === 'ko') flag = 'kp'
             else flag = name;
             return flag
-        } 
+        },
+
+        filmPoster(poster){
+            return this.posterFirstUrl + this.posterSize + `${poster}`
+        }
     }
 }
 </script>
