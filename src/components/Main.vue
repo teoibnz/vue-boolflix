@@ -1,18 +1,22 @@
 <template>
-    <div>
-        <ul v-for='(film, index) in filmList' :key="index" >
-            <li>
-                <img :src="filmPoster(film.poster_path)" alt="film poster">
-            </li>
-            <li>{{film.title || film.name}}</li>
-            <li>{{film.original_title || film.original_name}}</li>
-            <li>
-                <country-flag :country='flags(film.original_language)' size='big'/>
-            </li>
-            <li v-for="star in 5 - getStars(film.vote_average)" :key='star'>
-                <font-awesome-icon class="mb-3" icon="fa-solid fa-star" />
-            </li>
-        </ul>
+    <div class="container-fluid">
+        <h3 class="text-white">ORIGINALI NETFLIX</h3>
+        <div class="row" v-for='(film, index) in filmList' :key="index" >
+            <span class="col-12">
+                <img class="mt-4" :src="filmPoster(film.poster_path)" alt="film poster">
+            </span>
+            <div class="my-film-info">
+                <span>{{film.title || film.name}}</span>
+                <span>{{film.original_title || film.original_name}}</span>
+                <span>
+                    <country-flag :country='flags(film.original_language)' size='big'/>
+                </span>
+                <span v-for="star in 5 - getStars(film.vote_average)" :key='star'>
+                    Rating : <font-awesome-icon class="mb-3" icon="fa-solid fa-star" />
+                </span>
+            </div>
+            
+        </div>
     </div>
 </template>
 
