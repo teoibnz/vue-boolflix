@@ -1,23 +1,26 @@
 <template>
-    <div class="container-fluid">
+    <main>
         <h3 class="text-white">ORIGINALI NETFLIX</h3>
-        <div class="row" v-for='(film, index) in filmList' :key="index" >
+        <div class="container-fluid d-flex">
+        <div class="row my-film-container position-relative" v-for='(film, index) in filmList' :key="index" >
             <span class="col-12">
                 <img class="mt-4" :src="filmPoster(film.poster_path)" alt="film poster">
             </span>
             <div class="my-film-info">
-                <span>{{film.title || film.name}}</span>
-                <span>{{film.original_title || film.original_name}}</span>
+                <p  >{{film.title || film.name}}</p   >
+                <p  >{{film.original_title || film.original_name}}</p >
                 <span>
                     <country-flag :country='flags(film.original_language)' size='big'/>
                 </span>
-                <span v-for="star in 5 - getStars(film.vote_average)" :key='star'>
+                <!-- <span v-for="star in 5 - getStars(film.vote_average)" :key='star'>
                     Rating : <font-awesome-icon class="mb-3" icon="fa-solid fa-star" />
-                </span>
+                </span> -->
             </div>
             
         </div>
     </div>
+    </main>
+    
 </template>
 
 <script>
@@ -55,5 +58,25 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+div.my-film-container{
+    img{
+        height: 479px;
+    }
+
+    .my-film-info{
+        position: absolute;
+        top: 40px;
+        height: 80%;
+        color: white;
+        text-align: center;
+        display: none;
+    }
+}
+div.my-film-container:hover .my-film-info{
+    display: inline-block;
+}
+div.my-film-container:hover img{
+    opacity: 0.2;
+}
 
 </style>
